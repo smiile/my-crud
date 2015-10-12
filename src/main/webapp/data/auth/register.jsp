@@ -10,7 +10,7 @@
 <body>
 	<h3>Register</h3>
 	<c:if test="${not empty error}">
-		<p style="color: red">${error}</p>
+		<p style="color: red; margin-left: 20px;">${error}</p>
 	</c:if>
 	<div style="width: 250px; padding: 20px;">
 		<form method="POST" action="register">
