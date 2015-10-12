@@ -94,7 +94,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "${pageContext.request.contextPath}/api/deleteUser",
+            url: "../api/deleteUser",
             cache: false,
             method: "POST",
             data: {id: id},
@@ -140,7 +140,7 @@ $(document).ready(function () {
         var id = row.children().find("input[type=hidden]").val();
 
         $.ajax({
-            url: "${pageContext.request.contextPath}/api/updateUser",
+            url: "../api/updateUser",
             cache: false,
             method: "POST",
             data: {id: id, name: editedName, email: editedEmail},
@@ -204,7 +204,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "${pageContext.request.contextPath}/api/changePassword",
+            url: "../api/changePassword",
             cache: false,
             method: "POST",
             data: {id: id, password: newPassword},
@@ -233,7 +233,7 @@ $(document).ready(function () {
         //TODO: Extract "not-empty" validation function for form fields
         var hasError = false;
 
-        if (!email) {
+        if (!email || !isEmail(email)) {
             $('#emailRegisterInput').parent().addClass('has-error');
             hasError = true;
         }
@@ -258,7 +258,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "${pageContext.request.contextPath}/api/addUser",
+            url: "../api/addUser",
             cache: false,
             method: "POST",
             data: {email: email, name: name, password: password},
@@ -307,6 +307,11 @@ $(document).ready(function () {
             hasError = true;
             $('#editEmail').parent().addClass('has-error');
         }
+        
+        if(!isEmail($('#editEmail').val())) {
+            hasError = true;
+            $('#editEmail').parent().addClass('has-error');
+        }
 
         if ($('#editName').val() === "") {
             hasError = true;
@@ -321,4 +326,10 @@ $(document).ready(function () {
         $('#editName').val("");
         $('#errorMsg').html("");
     }
+    
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+    
 });

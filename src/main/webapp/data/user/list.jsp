@@ -144,6 +144,6 @@
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/data/script.js"></script>
+    <script src="${pageContext.request.contextPath}/data/user/script.js"></script>
 </body>
 </html>
