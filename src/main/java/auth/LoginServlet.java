@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 
 		if (Objects.equals(email, "") || Objects.equals(password, "")) {
 			request.setAttribute("error", "All fields are mandatory.");
-			request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/data/auth/login.jsp").forward(request, response);
 		} else {
 			EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
 			EntityManager em = emf.createEntityManager();
